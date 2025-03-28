@@ -11,22 +11,57 @@ public class Register extends JFrame {
     
     public Register() {
         setTitle("Registro");
-        setLayout(new FlowLayout());
-        setSize(300, 200);
+        setSize(400, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel titleLabel = new JLabel("Registro");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        add(titleLabel, gbc);
         
+        gbc.gridwidth = 1;
+        JLabel nameLabel = new JLabel("Nombre:");
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(nameLabel, gbc);
+
         nameField = new JTextField(20);
+        gbc.gridx = 1;
+        add(nameField, gbc);
+
+        JLabel emailLabel = new JLabel("Correo electrónico:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(emailLabel, gbc);
+
         emailField = new JTextField(20);
+        gbc.gridx = 1;
+        add(emailField, gbc);
+
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        add(passwordLabel, gbc);
+
         passwordField = new JPasswordField(20);
+        gbc.gridx = 1;
+        add(passwordField, gbc);
+
         registerButton = new JButton("Registrar");
-        
-        add(new JLabel("Nombre:"));
-        add(nameField);
-        add(new JLabel("Correo electrónico:"));
-        add(emailField);
-        add(new JLabel("Contraseña:"));
-        add(passwordField);
-        add(registerButton);
-        
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        add(registerButton, gbc);
+
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 register();
@@ -49,7 +84,7 @@ public class Register extends JFrame {
             saveUser(email, password);
             JOptionPane.showMessageDialog(this, "Registro exitoso");
             new Login().setVisible(true);
-            this.setVisible(false);
+            this.dispose(); // Cierra la ventana de registro
         }
     }
     

@@ -12,27 +12,48 @@ public class Login extends JFrame {
     
     public Login() {
         setTitle("Inicio de sesión");
-        setLayout(new FlowLayout());
-        setSize(300, 150);
-        
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel emailLabel = new JLabel("Correo electrónico:");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(emailLabel, gbc);
+
         emailField = new JTextField(20);
+        gbc.gridx = 1;
+        add(emailField, gbc);
+
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(passwordLabel, gbc);
+
         passwordField = new JPasswordField(20);
+        gbc.gridx = 1;
+        add(passwordField, gbc);
+
         loginButton = new JButton("Iniciar sesión");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(loginButton, gbc);
+
         registerButton = new JButton("Registrarse");
-        
-        add(new JLabel("Correo electrónico:"));
-        add(emailField);
-        add(new JLabel("Contraseña:"));
-        add(passwordField);
-        add(loginButton);
-        add(registerButton);
-        
+        gbc.gridx = 1;
+        add(registerButton, gbc);
+
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 login();
             }
         });
-        
+
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openRegisterScreen();
@@ -59,7 +80,7 @@ public class Login extends JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data[0].equals(email) && PasswordUtils.verifyPassword(password, data[1])) {
+                if (data[0].equals(email) && Password.verifyPassword(password, data[1])) {
                     return true;
                 }
             }

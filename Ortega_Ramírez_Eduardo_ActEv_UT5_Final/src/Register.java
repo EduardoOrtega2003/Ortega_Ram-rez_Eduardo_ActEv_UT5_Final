@@ -41,7 +41,7 @@ public class Register extends JFrame {
         
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
-        } else if (!PasswordUtils.isValidPassword(password)) {
+        } else if (!Password.isValidPassword(password)) {
             JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres");
         } else if (!isValidEmail(email)) {
             JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
@@ -60,7 +60,7 @@ public class Register extends JFrame {
     private void saveUser(String email, String password) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios/users.txt", true));
-            String hashedPassword = PasswordUtils.hashPassword(password);
+            String hashedPassword = Password.hashPassword(password);
             writer.write(email + "," + hashedPassword);
             writer.newLine();
             writer.close();

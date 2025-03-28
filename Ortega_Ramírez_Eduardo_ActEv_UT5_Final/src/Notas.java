@@ -31,6 +31,7 @@ public class Notas {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel inputPanel = new JPanel(new GridLayout(2, 1));
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
         inputPanel.setBackground(new Color(173, 216, 230));
 
         JPanel titlePanel = new JPanel(new BorderLayout());
@@ -38,9 +39,13 @@ public class Notas {
         
         titleField = new JTextField();
         titleField.setFont(new Font("Arial", Font.BOLD, 14));
+        titleField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        titleField.setPreferredSize(new Dimension(30, 10));
+        
         contentArea = new JTextArea(5, 20);
         contentArea.setFont(new Font("Arial", Font.PLAIN, 14));
-        contentArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contentArea.setPreferredSize(new Dimension(30, 30));
         JScrollPane scrollPane = new JScrollPane(contentArea);
 
         titlePanel.add(new JLabel("Título:"), BorderLayout.WEST);
@@ -103,6 +108,7 @@ public class Notas {
         });
 
         loadNotes();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 

@@ -78,7 +78,7 @@ public class Register extends JFrame {
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
         } else if (!Password.isValidPassword(password)) {
-            JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres");
+            JOptionPane.showMessageDialog(this, "La contraseña debe tener un mínimo de 4 caracteres");
         } else if (!isValidEmail(email)) {
             JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
         } else {

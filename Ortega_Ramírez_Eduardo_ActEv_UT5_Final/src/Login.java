@@ -89,7 +89,7 @@ public class Login extends JFrame {
             new Notas(email).setVisible(true);
             this.dispose(); // Cierra el frame de login
         } else {
-            JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
+            JOptionPane.showMessageDialog(this, "Datos incorrectos");
         }
     }
     
